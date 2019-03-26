@@ -50,10 +50,10 @@
                 {{-- </a> --}}
                 
                 <form method="post" action="/seances/{{ $s->id }}">
+                    @csrf
+                    @method('DELETE')
                     <a href="/seances/{{ $s->id }}" class="btn btn-primary"></a>
                     <a href="/seances/{{ $s->id }}/edit" class="btn btn-warning"></a>
-                    {{ csrf_field() }}
-                    {{ method_field('DELETE') }}
                     <button class="btn btn-danger"></button>
                 </form>
             </div>

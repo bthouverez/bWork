@@ -7,41 +7,29 @@
 @endsection
 
 @section('content')
-	@if($errors->any())
-		<section>
-			<table class="table">
-				<th class="danger">
-					<h2>Error(s)</h2>
-				</th>
-				@foreach($errors->all() as $e)
-					<tr class="danger">
-						<td>{{ $e }}</td>
-					</tr>
-				@endforeach
-			</table>
-		</section>
-	@endif
+
+	@include('errors')
 
 	<form method="POST" action="/sequences">
 		@csrf
 		<div class="form-group {{ $errors->has('libelle') ? 'has-error':'' }}">
 			<label class="control-label" for="iLibelle">Libellé</label>
-			<input type="text" class="form-control"
+			<input type="text" class="form-control" required
 				   value="{{ old('libelle') }}" name="libelle" id="iLibelle">
 		</div>
 		<div class="form-group {{ $errors->has('annee') ? 'has-error':'' }}">
 			<label class="control-label" for="iAnnee">Année</label>
-			<input type="number" class="form-control"
+			<input type="number" class="form-control" required
 				   value="{{ old('annee') }}" name="annee" id="iAnnee">
 		</div>
 		<div class="form-group {{ $errors->has('lieu') ? 'has-error':'' }}">
 			<label class="control-label" for="iLieu">Lieu</label>
-			<input type="text" class="form-control"
+			<input type="text" class="form-control" required
 				   value="{{ old('lieu') }}" name="lieu" id="iLieu">
 		</div>
 		<div class="form-group {{ $errors->has('groupe') ? 'has-error':'' }}">
 			<label class="control-label" for="iGroupe">Groupe</label>
-			<input type="text" class="form-control"
+			<input type="text" class="form-control" required
 				   value="{{ old('groupe') }}" name="groupe" id="iGroupe">
 		</div>
 

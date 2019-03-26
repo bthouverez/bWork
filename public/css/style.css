@@ -59,7 +59,7 @@ input[type="date"].form-control, input[type="time"].form-control {
     color: #5bc0de;
 }
 
-.seance .panel-heading {
+.seance .panel-heading, .sequence .panel-heading {
     display: flex;
     justify-content: space-between;
 }

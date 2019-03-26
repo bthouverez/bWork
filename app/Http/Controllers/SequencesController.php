@@ -78,9 +78,13 @@ class SequencesController extends Controller
      */
     public function update(Request $request, Sequence $sequence)
     {
-        $sequence->update(
-            $request->only(['libelle', 'annee', 'lieu', 'groupe'])
-        );
+        $data = $request->validate([
+            'libelle' => ['required', 'min:3'],
+            'annee' => ['required', 'digits:4'],
+            'lieu' => ['required', 'min:3'],
+            'groupe' => ['required', 'min:3'],
+        ]);
+        $sequence->update($data);
         return redirect('/sequences');
     }
 
