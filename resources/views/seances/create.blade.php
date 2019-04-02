@@ -1,8 +1,10 @@
 @extends('layout')
 
 @section('content')
+	@include('errors')
+
 <div class="container">
-	<form method="POST" action="/seances">
+	<form method="POST" action="/sequences/{{ $sequence->id }}/seances">
 		@csrf
 		<div class="form-group">
 			<label for="iLibelle">Libellé</label>

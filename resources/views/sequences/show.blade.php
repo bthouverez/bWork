@@ -32,7 +32,7 @@
       <div class="bs-callout bs-callout-info"><h4>Mardi 2 Octobre 2018</h4>Je vous prie de m'excuser pour mes absences des deux dernières semaines. Les deux cours manqués seront rattrapés, probablemement les vendredi 30 Novembre et 14 Décembre. Information à confirmer.</div>
       <hr> --}}
 
-<h2>Planning<a href="/seances/create/" class="btn btn-primary">+</a></h2>
+<h2>Planning<a href="/sequences/{{ $sequence->id }}/seances/create/" class="btn btn-primary">+</a></h2>
     
 	@foreach($sequence->seances->sortBy('date') as $s)
         <div class="panel panel-{{ $s->panel() }} seance">
@@ -49,11 +49,11 @@
                     </h3>
                 {{-- </a> --}}
                 
-                <form method="post" action="/seances/{{ $s->id }}">
+                <form method="post" action="/sequences/{{ $sequence->id }}/seances/{{ $s->id }}">
                     @csrf
                     @method('DELETE')
-                    <a href="/seances/{{ $s->id }}" class="btn btn-primary"></a>
-                    <a href="/seances/{{ $s->id }}/edit" class="btn btn-warning"></a>
+                    <a href="/sequences/{{ $sequence->id }}/seances/{{ $s->id }}" class="btn btn-primary"></a>
+                    <a href="/sequences/{{ $sequence->id }}/seances/{{ $s->id }}/edit" class="btn btn-warning"></a>
                     <button class="btn btn-danger"></button>
                 </form>
             </div>

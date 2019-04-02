@@ -91,8 +91,9 @@ class SequencesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Sequence  $sequence
+     * @param  \App\Sequence $sequence
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function destroy(Sequence $sequence)
     {

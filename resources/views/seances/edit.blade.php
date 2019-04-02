@@ -1,9 +1,11 @@
 @extends('layout')
 
 @section('content')
+	@include('errors')
+	
 <div class="container">
 	<h1>{{ $seance->sequence->libelle }}{{ $seance->sequence->annee }} <small>Edition de séance</small></h1>
-	<form method="POST" action="/seances/{{ $seance->id }}">
+	<form method="POST" action="/sequences/{{ $sequence->id }}/seances/{{ $seance->id }}">
 		@csrf
 		@method('PATCH')
 
@@ -34,7 +36,7 @@
 		<button class="btn btn-primary">Sauver</button>
 	</form>
 	<br>
-	<form method="post" action="/seances/{{ $seance->id }}">
+	<form method="post" action="/sequences/{{ $sequence->id }}/seances/{{ $seance->id }}">
 		{{ csrf_field() }}
 		{{ method_field('DELETE') }}
 		<button class="btn btn-danger">Détruire</button>

@@ -16,7 +16,6 @@ Route::get('/', function () {
 });
 
 
-Route::resource('seances', 'SeancesController');
+Route::resource('sequences.seances', 'SeancesController');
 
 Route::resource('sequences', 'SequencesController');
-

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-	<h1>{{ $seance->sequence->libelle }}{{ $seance->sequence->annee }}</h1>
+	<h1>{{ $sequence->libelle }}{{ $sequence->annee }}</h1>
 	<div class="panel panel-{{ $seance->panel() }}">
 		<div class="panel-heading">
 			<h3 class="panel-title">
@@ -20,7 +20,7 @@
 			<div>{!! $seance->contenu !!}</div>
 		</div>
 	</div>
-	<a href="/seances/{{ $seance->id }}/edit" class="btn btn-warning">Editer</a>
-	<a href="/sequences/{{ $seance->sequence->id }}" class="btn btn-primary">Retour</a>
+	<a href="/sequences/{{ $sequence->id }}/seances/{{ $seance->id }}/edit" class="btn btn-warning">Editer</a>
+	<a href="/sequences/{{ $sequence->id }}" class="btn btn-primary">Retour</a>
 </div>
 @endsection
