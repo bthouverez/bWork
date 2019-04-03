@@ -22,7 +22,7 @@
         		</a>
 				<div>
 
-					<form method="*POST" action="/sequences/{{ $s->id }}">
+					<form method="POST" action="/sequences/{{ $s->id }}">
 						@csrf
 						@method('DELETE')
 						<a href="/sequences/{{ $s->id }}/edit" class="btn btn-warning"></a>
