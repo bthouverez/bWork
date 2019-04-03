@@ -11,6 +11,7 @@
 	<p>
 		<a href="/sequences/create"><button class="btn btn-primary">Créer séquence</button></a>
 	</p>
+	<section id="sequences">
 	@foreach($sequences as $s)
 		<div class="panel panel-success sequence">
 			<div class="panel-heading">
@@ -36,4 +37,5 @@
 			</div>
 		</div>
 	@endforeach
+	</section>
 @endsection

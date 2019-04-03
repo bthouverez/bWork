@@ -91,13 +91,12 @@ class SeancesController extends Controller
      */
     public function update(Request $request, Sequence $sequence, Seance $seance)
     {
-
         $data = $request->validate([
             'libelle' => ['required', 'min:3'],
             'date' => ['required', 'date'],
-            'heure' => ['required', 'dateformat:h:m'],
+            'heure' => ['required', 'dateformat:h:m:s'],
             'salle' => ['required', 'integer'],
-            'duree' => ['required', 'dateformat:h:m'],
+            'duree' => ['required', 'dateformat:h:m:s'],
             'contenu' => ['required', 'min:3']
         ]);
 

@@ -1,10 +1,15 @@
 @extends('layout')
 
+@section('header')
+	<h1> Edition de séance<br>
+		<small>{{ $sequence->libelle }}{{ $sequence->annee }}</small>
+	</h1>
+@endsection
+
 @section('content')
 	@include('errors')
 	
 <div class="container">
-	<h1>{{ $seance->sequence->libelle }}{{ $seance->sequence->annee }} <small>Edition de séance</small></h1>
 	<form method="POST" action="/sequences/{{ $sequence->id }}/seances/{{ $seance->id }}">
 		@csrf
 		@method('PATCH')
@@ -35,12 +40,12 @@
 		</div>
 		<button class="btn btn-primary">Sauver</button>
 	</form>
-	<br>
 	<form method="post" action="/sequences/{{ $sequence->id }}/seances/{{ $seance->id }}">
 		{{ csrf_field() }}
 		{{ method_field('DELETE') }}
 		<button class="btn btn-danger">Détruire</button>
 	</form>
+	<br>
 
 </div>
 @endsection

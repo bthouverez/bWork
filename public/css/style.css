@@ -63,3 +63,13 @@ input[type="date"].form-control, input[type="time"].form-control {
     display: flex;
     justify-content: space-between;
 }
+
+#sequences {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#sequences .sequence {
+    width: 225px;
+    margin: 10px 15px 0 0;
+}
