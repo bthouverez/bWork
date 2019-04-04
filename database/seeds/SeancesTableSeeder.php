@@ -12,6 +12,7 @@ class SeancesTableSeeder extends Seeder
      */
     public function run()
     {
+
     // ProgWeb1819
         $s = new Seance();
         $s->sequence_id = 1;

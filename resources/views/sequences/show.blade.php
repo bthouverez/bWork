@@ -13,8 +13,9 @@
 
 @section('content')
 	<div class="container">
-
-    @include('sequences.headers.'.$sequence->libelle.'_'.$sequence->annee)
+    @if(file_exists(resource_path('views\sequences\headers\\'.$sequence->libelle.'_'.$sequence->annee.'.blade.php')))
+        @include('sequences.headers.'.$sequence->libelle.'_'.$sequence->annee)
+    @endif
 
     @if($sequence->infos()->count())
         <h2>Informations</h2>
@@ -37,7 +38,7 @@
                         {{ $s->writeDate($s->date) }} 
                         ({{ ltrim(date_create($s->duree)->format('h'), '0') }}h)
                         @if($s->salle != '')
-                        ,
+                            -
                         <?php $seancealles = explode(' ', $s->salle); ?>
                         Salle {{ $seancealles[0] }} {{ isset($seancealles[1]) ? ' puis '.$seancealles[1] : '' }}
                         @endif
