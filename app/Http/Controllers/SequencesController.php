@@ -54,6 +54,9 @@ class SequencesController extends Controller
             'groupe' => ['required', 'min:3'],
         ]);
         Sequence::create($data);
+        $filename = resource_path().'/views/sequences/headers/'.$request->libelle.'_'.$request->annee.'.blade.php';
+        $filecontent = '<section class="row">'.PHP_EOL.PHP_EOL.'</section>'.PHP_EOL.'<hr>';
+        file_put_contents($filename, $filecontent);
         return redirect('/sequences');
     }
 
@@ -91,11 +94,13 @@ class SequencesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Sequence  $sequence
+     * @param  \App\Sequence $sequence
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function destroy(Sequence $sequence)
     {
+        unlink(resource_path().'/views/sequences/headers/'.$sequence->libelle.'_'.$sequence->annee.'.blade.php');
         $sequence->delete();
         return redirect('/sequences');
     }

@@ -1,4 +1,4 @@
-<div class="row">
+<section class="row">
     <div class="col-md-3">
       <h2>Cours</h2>
       <p>Les slides du cours sont disponibles ici. Vous avez la possibilité de poster des commentaires sur le cours, n'hésitez pas si certaines parties ne sont pas claires ou si des erreurs se sont glissées dedans.</p>

@@ -11,97 +11,113 @@ class SeancesController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Sequence $sequence
      * @return \Illuminate\Http\Response
      */
     public function index(Sequence $sequence)
     {
-        // inaccessible pour l'instant
-        abort(404);
-
-        $seances = Seance::all();
-        return view('seances.index', compact('seances'));
+        // équivalent au show d'une séquence
+        return redirect('/sequences/'. $sequence->id);
     }
 
     /**
      * Show the form for creating a new resource.
      *
+     * @param Sequence $sequence
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Sequence $sequence)
     {
-        return view('seances.create');
+        return view('seances.create', compact('sequence'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Sequence $sequence
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Sequence $sequence, Request $request)
     {
-        Seance::create([
-            'libelle' => $request->libelle,
-            'date' => $request->date.' '.$request->heure,
-            'salle' => $request->salle,
-            'duree' => $request->duree,
-            'contenu' => $request->contenu
+        $data = $request->validate([
+            'libelle' => ['required', 'min:3'],
+            'date' => ['required', 'date'],
+            'heure' => ['required', 'dateformat:h:m'],
+            'salle' => ['required', 'integer'],
+            'duree' => ['required', 'dateformat:h:m'],
+            'contenu' => ['required', 'min:3']
         ]);
-        return redirect('/seances');
+
+        $data['date'] .= ' '.$data['heure'];
+        unset($data['heure']);
+        $data['sequence_id'] = $sequence->id;
+
+        Seance::create($data);
+        return redirect('/sequences/'. $sequence->id);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Seance  $seance
+     * @param Sequence $sequence
+     * @param  \App\Seance $seance
      * @return \Illuminate\Http\Response
      */
-    public function show(Seance $seance)
+    public function show(Sequence $sequence, Seance $seance)
     {
-        return view('seances.show', compact('seance'));
+        return view('seances.show', compact('sequence'), compact('seance'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Seance  $seance
+     * @param Sequence $sequence
+     * @param  \App\Seance $seance
      * @return \Illuminate\Http\Response
      */
-    public function edit(Seance $seance)
+    public function edit(Sequence $sequence, Seance $seance)
     {
-        return view('seances.edit', compact('seance'));
+        return view('seances.edit', compact('sequence'), compact('seance'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     * @param Sequence $sequence
      * @param  \App\Seance  $seance
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Seance $seance)
+    public function update(Request $request, Sequence $sequence, Seance $seance)
     {
-        $seance->update([
-            'libelle' => $request->libelle,
-            'date' => $request->date.' '.$request->heure,
-            'salle' => $request->salle,
-            'duree' => $request->duree,
-            'contenu' => $request->contenu
+        $data = $request->validate([
+            'libelle' => ['required', 'min:3'],
+            'date' => ['required', 'date'],
+            'heure' => ['required', 'dateformat:h:m:s'],
+            'salle' => ['required', 'integer'],
+            'duree' => ['required', 'dateformat:h:m:s'],
+            'contenu' => ['required', 'min:3']
         ]);
-        return redirect('/sequences/'.$seance->sequence->id);
-        return redirect('/seances/'.$seance->id);
+
+        $data['date'] .= ' '.$data['heure'];
+        unset($data['heure']);
+
+        $seance->update($data);
+        return redirect('/sequences/'.$sequence->id);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Seance  $seance
+     * @param Sequence $sequence
+     * @param  \App\Seance $seance
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
-    public function destroy(Seance $seance)
+    public function destroy(Sequence $sequence, Seance $seance)
     {
-        $idSeq = $seance->sequence->id;
         $seance->delete();
-        return redirect('/sequences/'.$idSeq);
+        return redirect('/sequences/'.$sequence->id);
     }
 }

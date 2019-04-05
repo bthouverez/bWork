@@ -10,6 +10,11 @@ class Sequence extends Model
 
     public function seances()
     {
-    	return $this->hasMany(Seance::class);
+        return $this->hasMany(Seance::class);
+    }
+
+    public function infos()
+    {
+        return $this->hasMany(Info::class);
     }
 }
