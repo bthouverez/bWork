@@ -11,11 +11,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $FACTORY = trUE;
+        $FACTORY = false;
+        $NB = 10;
 
         if($FACTORY) {
-            factory(App\Sequence::class, 5)->create();
-            factory(App\Seance::class, 30)->create();
+            factory(App\Sequence::class, $NB)->create();
+            factory(App\Seance::class, $NB*6)->create();
         } else {
             $this->call([
                 SeancesTableSeeder::class,

@@ -17,18 +17,25 @@
         @include('sequences.headers.'.$sequence->libelle.'_'.$sequence->annee)
     @endif
 
+    <h2>Informations</h2>
+    <form method="post" action="/sequences/{{ $sequence->id }}/infos">
+        @csrf
+        <div class="form-row">
+            <textarea class="col-10 mr-3 form-control" name="infoContent" required></textarea>
+            <button class=" col btn btn-primary">Ajouter</button>
+        </div>
+    </form>
     @if($sequence->infos()->count())
-        <h2>Informations</h2>
         @foreach($sequence->infos as $i)
             <div class="bs-callout bs-callout-{{ $i->panel }}"><h4>{{ App\Seance::writeDate($i->date) }}</h4>
             {!! $i->contenu !!}
             </div>
         @endforeach
-        <hr>
     @endif
+    <hr>
 
-    <a href="/sequences/{{ $sequence->id }}/seances/create/" class="btn btn-primary">Ajouter séance</a>
-    <h2>Planning</h2>
+    
+    <h2>Planning <a href="/sequences/{{ $sequence->id }}/seances/create/" class="btn btn-primary">Ajouter séance</a></h2>
     <section id="seances">
   @foreach($sequence->seances->sortBy('date') as $s)
         <div class="card seance mb-3 border-{{ $s->panel() }}">

@@ -23,7 +23,7 @@ class Seance extends Model
 		$res = $j[intval(date('N', $timestamp))].' '.ltrim($d[2], '0').' '.$m[intval($d[1])].' '.$d[0];
 		if(isset($tab[1])) {
             $heure = explode(':', $tab[1]);
-            $res .= ' à ' . ltrim($heure[0], '0') . ' heures';
+            $res .= ' à ' . ltrim($heure[0], '0') . ':'.$heure[1];
         }
 		return $res;
 	}

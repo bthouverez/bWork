@@ -19,3 +19,4 @@ Route::get('/', function () {
 Route::resource('sequences.seances', 'SeancesController');
 
 Route::resource('sequences', 'SequencesController');
+Route::post('/sequences/{sequence}/infos', 'SequencesController@addInfo');

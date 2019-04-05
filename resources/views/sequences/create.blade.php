@@ -34,7 +34,15 @@
 				   value="{{ old('groupe') }}" name="groupe" id="iGroupe">
 		</div>
 
-		<h2>Ajout de séances</h2>
+		
+		<div class="form-check">
+		  <input class="form-check-input" type="checkbox" value="lol" name="ajoutSeances" checked id="ajoutSeances">
+		  <label class="form-check-label" for="ajoutSeances">
+		    <h2 id="h2Seances">Ajout de séances</h2>
+		  </label>
+		</div>
+
+		<div id="divAjoutSeances">
 
 		<select class="form-control" name="jour">
 			<option>Lundi</option>
@@ -52,6 +60,10 @@
 			<label for="iDuree">Duree</label>
 			<input type="time" class="form-control" id="iDuree" name="duree" value="{{ old('duree') }}">
 		</div>
+		<div class="form-group">
+			<label for="iSalle">Salle</label>
+			<input type="text" class="form-control" value="{{ old('salle') }}" name="salle" id="iSalle" required>
+		</div>
 
 		<div class="form-row">
 				<div class="form-group col">
@@ -63,7 +75,7 @@
 					<label for="iDateF">Date fin</label>
 					<input type="date" class="form-control" value="{{ old('dateFin') }}" name="dateFin" id="iDateF" required>
 				</div>
-
+		</div>
 		</div>
 
 
