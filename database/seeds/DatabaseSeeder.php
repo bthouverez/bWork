@@ -17,7 +17,11 @@ class DatabaseSeeder extends Seeder
         if($FACTORY) {
             factory(App\Sequence::class, $NB)->create();
             factory(App\Seance::class, $NB*6)->create();
-        } else {
+            $this->call(InfosTableSeeder::class);
+        $this->call(iSeed_SequencesTableSeeder::class);
+        $this->call(iSeed_SeancesTableSeeder::class);
+        $this->call(iSeed_InfosTableSeeder::class);
+    } else {
             $this->call([
                 SeancesTableSeeder::class,
                 SequencesTableSeeder::class
