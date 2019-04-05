@@ -33,7 +33,7 @@ class Seance extends Model
 		if(date_create(date_create($this->date)->format('Y-m-d')) < today()) {
 			return 'success';
 		} else if(date_create(date_create($this->date)->format('Y-m-d')) > today()) {
-			return 'default';
+			return 'secondary';
 		} else {
 			return 'primary';
 		}

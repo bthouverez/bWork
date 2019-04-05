@@ -59,7 +59,7 @@ input[type="date"].form-control, input[type="time"].form-control {
     color: #5bc0de;
 }
 
-.seance .panel-heading, .sequence .panel-heading {
+.seance .card-header, .sequence .card-header {
     display: flex;
     justify-content: space-between;
 }
@@ -70,6 +70,5 @@ input[type="date"].form-control, input[type="time"].form-control {
 }
 
 #sequences .sequence {
-    width: 225px;
-    margin: 10px 15px 0 0;
+    width: 30%;
 }

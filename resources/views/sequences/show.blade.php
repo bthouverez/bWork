@@ -31,10 +31,10 @@
     <h2>Planning</h2>
     <section id="seances">
 	@foreach($sequence->seances->sortBy('date') as $s)
-        <div class="panel panel-{{ $s->panel() }} seance">
-            <div class="panel-heading">
+        <div class="card seance mb-3 border-{{ $s->panel() }}">
+            <div class="card-header bg-{{ $s->panel() }}">
                 {{-- <a href="/seances/{{ $s->id }}"> --}}
-                    <h3 class="panel-title">
+                    <h4 class="card-title">
                         {{ $s->writeDate($s->date) }} 
                         ({{ ltrim(date_create($s->duree)->format('h'), '0') }}h)
                         @if($s->salle != '')
@@ -42,7 +42,7 @@
                         <?php $seancealles = explode(' ', $s->salle); ?>
                         Salle {{ $seancealles[0] }} {{ isset($seancealles[1]) ? ' puis '.$seancealles[1] : '' }}
                         @endif
-                    </h3>
+                    </h4>
                 {{-- </a> --}}
                 
                 <form method="post" action="/sequences/{{ $sequence->id }}/seances/{{ $s->id }}">
@@ -53,7 +53,7 @@
                     <button class="btn btn-danger"></button>
                 </form>
             </div>
-            <div class="panel-body">
+            <div class="card-body">
                 <h4>{{ $s->libelle }}</h4>
                 <div>{!! $s->contenu !!}</div>
             </div>
