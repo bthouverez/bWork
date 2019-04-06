@@ -31,9 +31,9 @@ class Seance extends Model
 	public function panel()
 	{
 		if(date_create(date_create($this->date)->format('Y-m-d')) < today()) {
-			return 'success';
-		} else if(date_create(date_create($this->date)->format('Y-m-d')) > today()) {
 			return 'secondary';
+		} else if(date_create(date_create($this->date)->format('Y-m-d')) > today()) {
+			return 'success';
 		} else {
 			return 'primary';
 		}

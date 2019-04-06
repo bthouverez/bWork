@@ -24,7 +24,7 @@
 		</div>
 		<div class="form-group">
 			<label for="iHeure">Heure</label>
-			<input type="time" class="form-control" id="iHeure" name="heure" value="{{ date_create($seance->date)->format('h:i:s') }}">
+			<input type="time" class="form-control" id="iHeure" name="heure" value="{{ date_create($seance->date)->format('H:i') }}">
 		</div>
 		<div class="form-group">
 			<label for="iSalle">Salle</label>
@@ -32,7 +32,7 @@
 		</div>
 		<div class="form-group">
 			<label for="iDuree">Duree</label>
-			<input type="time" class="form-control" id="iDuree" name="duree" value="{{ $seance->duree }}">
+			<input type="time" class="form-control" id="iDuree" name="duree" value="{{ date_create($seance->duree)->format('H:i') }}">
 		</div>
 		<div class="form-group">
 			<label for="iContenu">Contenu</label>

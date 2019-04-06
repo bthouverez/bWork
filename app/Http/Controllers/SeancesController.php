@@ -43,9 +43,9 @@ class SeancesController extends Controller
         $data = $request->validate([
             'libelle' => ['required', 'min:3'],
             'date' => ['required', 'date'],
-            'heure' => ['required', 'dateformat:h:m'],
+            'heure' => ['required', 'dateformat:H:i'],
             'salle' => ['required', 'integer'],
-            'duree' => ['required', 'dateformat:h:m'],
+            'duree' => ['required', 'dateformat:H:i'],
             'contenu' => ['required', 'min:3']
         ]);
 
@@ -94,9 +94,9 @@ class SeancesController extends Controller
         $data = $request->validate([
             'libelle' => ['required', 'min:3'],
             'date' => ['required', 'date'],
-            'heure' => ['required', 'dateformat:h:m:s'],
+            'heure' => ['required', 'dateformat:H:i'],
             'salle' => ['required', 'integer'],
-            'duree' => ['required', 'dateformat:h:m:s'],
+            'duree' => ['required', 'dateformat:H:i'],
             'contenu' => ['required', 'min:3']
         ]);
 

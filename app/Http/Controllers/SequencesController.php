@@ -67,8 +67,8 @@ class SequencesController extends Controller
         if(isset($request->ajoutSeances)) {
             $data = $request->validate([
                 'jour' => ['required'],
-                'heure' => ['required'],
-                'duree' => ['required'],
+                'heure' => ['required', 'dateformat:H:i'],
+                'duree' => ['required', 'dateformat:H:i'],
                 'salle' => ['required'],
                 'dateDepart' => ['required', 'date'],
                 'dateFin' => ['required', 'date'],
@@ -99,7 +99,7 @@ class SequencesController extends Controller
         }
 
 
-        return redirect('/sequences');
+        return redirect('/sequences/'.$seq->id);
     }
 
 
