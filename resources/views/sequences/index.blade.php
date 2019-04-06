@@ -8,11 +8,13 @@
 @endsection
 
 @section('content')
+    @auth
     <p>
         <a href="/sequences/create">
             <button class="btn btn-primary">Créer séquence</button>
         </a>
     </p>
+    @endauth
     <section id="sequences">
         @foreach($sequences as $s)
             <div class="card sequence mb-3 mr-2">
@@ -23,13 +25,14 @@
                         </h3>
                     </a>
                     <div>
-
+                    @auth
                         <form method="POST" action="/sequences/{{ $s->id }}">
                             @csrf
                             @method('DELETE')
                             <a href="/sequences/{{ $s->id }}/edit" class="btn btn-warning"></a>
                             <button class="btn btn-danger"></button>
                         </form>
+                    @endauth
 
                     </div>
                 </div>

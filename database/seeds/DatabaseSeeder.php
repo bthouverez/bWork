@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             factory(App\Seance::class, $NB*6)->create();
             $this->call(InfosTableSeeder::class);
 
+        $this->call(UsersTableSeeder::class);
     } else {
             $this->call([
                 SeancesTableSeeder::class,
