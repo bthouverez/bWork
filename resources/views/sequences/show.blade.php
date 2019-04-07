@@ -13,7 +13,7 @@
 
 @section('content')
   <div class="container">
-    @if(file_exists(resource_path('views\sequences\headers\\'.$sequence->libelle.'_'.$sequence->annee.'.blade.php')))
+    @if(file_exists(resource_path('/views/sequences/headers/'.$sequence->libelle.'_'.$sequence->annee.'.blade.php')))
         @include('sequences.headers.'.$sequence->libelle.'_'.$sequence->annee)
     @endif
 

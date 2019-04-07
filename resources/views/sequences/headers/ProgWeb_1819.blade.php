@@ -19,5 +19,5 @@
       <p>Si vous avez des questions, n'hésitez surtout pas à m'envoyer un mail! bastien.thouverez -at- univ-lyon1.fr</p>
       <p><a class="btn btn-secondary" href="mailto:bastien.thouverez@univ-lyon1.fr" role="button">Mailez-moi &raquo;</a></p>
     </div>
-  </div>
+  </section>
   <hr>
