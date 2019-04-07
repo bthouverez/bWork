@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use \App\Sequence;
 use \App\Info;
+use \App\User;
 
 class SequencesTableSeeder extends Seeder
 {
@@ -13,6 +14,13 @@ class SequencesTableSeeder extends Seeder
      */
     public function run()
     {
+        $u = new User();
+        $u->name = 'bthouverez';
+        $u->email = 'bthouverez@bthouverez.fr';
+        $u->password = '$2y$10$NhVXSrCCephrL.eUPZAi1ecD70QSCjhuw62EACeaoTEsC2FFjLVrq';
+        $u->save();
+
+
         $s = new Sequence();
         $s->libelle = 'ProgWeb';
         $s->annee = '1819';
