@@ -21,10 +21,11 @@
             <div class="card-text">
                 <h4>{{ $seance->libelle }}</h4>
                 <div>{!! $seance->contenu !!}</div>
-                <a href="/sequences/{{ $sequence->id }}/seances/{{ $seance->id }}/edit" class="btn btn-warning">Editer</a>
-                <a href="/sequences/{{ $sequence->id }}" class="btn btn-primary">Retour</a>
             </div>
             </div>
         </div>
+        <br>
+        @auth <a href="/sequences/{{ $sequence->id }}/seances/{{ $seance->id }}/edit" class="btn btn-warning">Editer</a> @endauth
+        <a href="/sequences/{{ $sequence->id }}" class="btn btn-primary">Retour</a>
     </div>
 @endsection

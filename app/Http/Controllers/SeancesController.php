@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Seance;
 use App\Sequence;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SeancesController extends Controller
 {
@@ -28,6 +29,7 @@ class SeancesController extends Controller
      */
     public function create(Sequence $sequence)
     {
+        if(!Auth::check()) abort(401);
         return view('seances.create', compact('sequence'));
     }
 
@@ -40,6 +42,7 @@ class SeancesController extends Controller
      */
     public function store(Sequence $sequence, Request $request)
     {
+        if(!Auth::check()) abort(401);
         $data = $request->validate([
             'libelle' => ['required', 'min:3'],
             'date' => ['required', 'date'],
@@ -78,6 +81,7 @@ class SeancesController extends Controller
      */
     public function edit(Sequence $sequence, Seance $seance)
     {
+        if(!Auth::check()) abort(401);
         return view('seances.edit', compact('sequence'), compact('seance'));
     }
 
@@ -91,6 +95,7 @@ class SeancesController extends Controller
      */
     public function update(Request $request, Sequence $sequence, Seance $seance)
     {
+        if(!Auth::check()) abort(401);
         $data = $request->validate([
             'libelle' => ['required', 'min:3'],
             'date' => ['required', 'date'],
@@ -117,6 +122,7 @@ class SeancesController extends Controller
      */
     public function destroy(Sequence $sequence, Seance $seance)
     {
+        if(!Auth::check()) abort(401);
         $seance->delete();
         return redirect('/sequences/'.$sequence->id);
     }

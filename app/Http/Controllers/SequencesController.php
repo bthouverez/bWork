@@ -6,6 +6,7 @@ use App\Sequence;
 use App\Seance;
 use App\Info;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SequencesController extends Controller
 {
@@ -41,6 +42,7 @@ class SequencesController extends Controller
      */
     public function create()
     {
+        if(!Auth::check()) abort(401);
         return view('sequences.create');
     }
 
@@ -52,6 +54,7 @@ class SequencesController extends Controller
      */
     public function store(Request $request)
     {
+        if(!Auth::check()) abort(401);
         //dd($request);
         $data = $request->validate([
             'libelle' => ['required', 'min:3'],
@@ -111,6 +114,7 @@ class SequencesController extends Controller
      */
     public function edit(Sequence $sequence)
     {
+        if(!Auth::check()) abort(401);
         return view('sequences.edit', compact('sequence'));
     }
 
@@ -123,6 +127,7 @@ class SequencesController extends Controller
      */
     public function update(Request $request, Sequence $sequence)
     {
+        if(!Auth::check()) abort(401);
         $data = $request->validate([
             'libelle' => ['required', 'min:3'],
             'annee' => ['required', 'digits:4'],
@@ -142,6 +147,7 @@ class SequencesController extends Controller
      */
     public function destroy(Sequence $sequence)
     {
+        if(!Auth::check()) abort(401);
         unlink(resource_path().'/views/sequences/headers/'.$sequence->libelle.'_'.$sequence->annee.'.blade.php');
         $sequence->delete();
         return redirect('/sequences');
@@ -149,6 +155,7 @@ class SequencesController extends Controller
 
     public function addInfo(Request $request, Sequence $sequence)
     {
+        if(!Auth::check()) abort(401);
         $data = $request->validate([
             'infoContent' => ['required', 'min:3']
         ]);
