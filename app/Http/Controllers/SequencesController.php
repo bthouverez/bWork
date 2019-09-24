@@ -7,6 +7,7 @@ use App\Seance;
 use App\Info;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Liliumdev\ICalendar\ZCiCal;
 
 class SequencesController extends Controller
 {
@@ -19,7 +20,10 @@ class SequencesController extends Controller
     {
         $an = intval(date('y'));
         $anneeScol = intval(date('m')) < 8 ? "".($an-1).$an : "".$an.($an+1);
-        $sequences = Sequence::where(['annee' => $anneeScol])->get();
+        if(Auth::check())
+            $sequences = Sequence::all();
+        else
+            $sequences = Sequence::where(['annee' => $anneeScol])->get();
 
         return view('sequences.index', compact('sequences'));
     }
@@ -55,7 +59,6 @@ class SequencesController extends Controller
     public function store(Request $request)
     {
         if(!Auth::check()) abort(401);
-        //dd($request);
         $data = $request->validate([
             'libelle' => ['required', 'min:3'],
             'annee' => ['required', 'digits:4'],
@@ -67,7 +70,43 @@ class SequencesController extends Controller
         $filecontent = '<section class="row">'.PHP_EOL.PHP_EOL.'</section>'.PHP_EOL.'<hr>';
         file_put_contents($filename, $filecontent);
 
-        if(isset($request->ajoutSeances)) {
+        // ICAL file given
+        if($request->files->count()) {
+
+            $icalstring = file_get_contents($request->file('ical')->getRealPath());
+            $icalobj = new ZCiCal($icalstring);
+
+            foreach($icalobj->tree->child as $node)
+            {
+                if($node->getName() == "VEVENT")
+                {
+                    $s = [];
+                    $fields = ["DTSTART", "DTEND", "LOCATION", "SUMMARY"];
+                    // Getting seance data from file
+                    foreach($node->data as $key => $value)	{
+                        if(in_array($key, $fields))	{
+                            $s[$key] = $value->getValues();
+                        }
+                    }
+
+                    // Creating bWork data
+                    $seance = new Seance();
+                    $seance->sequence_id = $seq->id;
+                    $date = new \DateTime($s['DTSTART']);
+                    $seance->duree = date_diff($date, new \DateTime($s['DTEND']))->format('%H:%I:%S');
+                    $date->add(new \DateInterval('PT2H'));
+                    $seance->date = $date->format('Y-m-d H:i:s');
+                    $seance->libelle = $s['SUMMARY'];
+                    $seance->salle = intval(substr($s['LOCATION'], 1));
+                    $seance->contenu = '';
+                    $seance->save();
+
+
+                }
+            }
+
+        // semi-auto seance filler
+        } else if(isset($request->ajoutSeances)) {
             $data = $request->validate([
                 'jour' => ['required'],
                 'heure' => ['required', 'dateformat:H:i'],
@@ -76,7 +115,6 @@ class SequencesController extends Controller
                 'dateDepart' => ['required', 'date'],
                 'dateFin' => ['required', 'date'],
             ]);
-
 
             $depart = strtotime($data['dateDepart']);
             $j = array('Lundi'=>"Monday", 'Mardi'=>'Tuesday', 'Mercredi'=>'Wednesday', 'Jeudi'=>'Thurdsay', 'Vendredi'=>'Friday', 'Samedi'=>'Saturday', 'Dimanche'=>'Sunday');
@@ -148,7 +186,9 @@ class SequencesController extends Controller
     public function destroy(Sequence $sequence)
     {
         if(!Auth::check()) abort(401);
-        unlink(resource_path().'/views/sequences/headers/'.$sequence->libelle.'_'.$sequence->annee.'.blade.php');
+        $filepath = resource_path().'/views/sequences/headers/'.$sequence->libelle.'_'.$sequence->annee.'.blade.php';
+        if(file_exists($filepath))
+            unlink($filepath);
         $sequence->delete();
         return redirect('/sequences');
     }

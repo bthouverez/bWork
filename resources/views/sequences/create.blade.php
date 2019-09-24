@@ -10,7 +10,7 @@
 
 	@include('errors')
 
-	<form method="POST" action="/sequences">
+	<form method="POST" action="/sequences" enctype="multipart/form-data">
 		@csrf
 		<div class="form-group {{ $errors->has('libelle') ? 'has-error':'' }}">
 			<label class="control-label" for="iLibelle">Libellé</label>
@@ -34,12 +34,19 @@
 				   value="{{ old('groupe') }}" name="groupe" id="iGroupe">
 		</div>
 
-		
+
+		<div class="form-group">
+			<label for="ajoutIcal">
+				<h2 id="h2Ical">Ajout de séances par calendrier ICal</h2>
+			</label>
+			<input type="file" class="form-control-file" name="ical" id="ajoutIcal">
+		</div>
+
 		<div class="form-check">
-		  <input class="form-check-input" type="checkbox" value="lol" name="ajoutSeances" checked id="ajoutSeances">
-		  <label class="form-check-label" for="ajoutSeances">
-		    <h2 id="h2Seances">Ajout de séances</h2>
-		  </label>
+			<input class="form-check-input" type="checkbox" value="manual" name="ajoutSeances" id="ajoutSeances">
+			<label class="form-check-label" for="ajoutSeances">
+				<h2 id="h2Seances">Ajout de séances manuel</h2>
+			</label>
 		</div>
 
 		<div id="divAjoutSeances">
@@ -62,18 +69,18 @@
 		</div>
 		<div class="form-group">
 			<label for="iSalle">Salle</label>
-			<input type="text" class="form-control" value="{{ old('salle') }}" name="salle" id="iSalle" required>
+			<input type="text" class="form-control" value="{{ old('salle') }}" name="salle" id="iSalle">
 		</div>
 
 		<div class="form-row">
 				<div class="form-group col">
 					<label for="iDateD">Date départ</label>
-					<input type="date" class="form-control" value="{{ old('dateDepart') }}" name="dateDepart" id="iDateD" required>
+					<input type="date" class="form-control" value="{{ old('dateDepart') }}" name="dateDepart" id="iDateD">
 				</div>
 
 				<div class="form-group col">
 					<label for="iDateF">Date fin</label>
-					<input type="date" class="form-control" value="{{ old('dateFin') }}" name="dateFin" id="iDateF" required>
+					<input type="date" class="form-control" value="{{ old('dateFin') }}" name="dateFin" id="iDateF">
 				</div>
 		</div>
 		</div>
