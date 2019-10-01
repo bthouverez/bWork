@@ -20,10 +20,10 @@ class SequencesController extends Controller
     {
         $an = intval(date('y'));
         $anneeScol = intval(date('m')) < 8 ? "".($an-1).$an : "".$an.($an+1);
-       // if(Auth::check())
+        if(Auth::check())
             $sequences = Sequence::all()->groupby('annee')->sort();
-       // else
-           // $sequences = array($anneeScol => Sequence::where(['annee' => $anneeScol])->get());
+        else
+            $sequences = array($anneeScol => Sequence::where(['annee' => $anneeScol])->get());
 
         return view('sequences.index', compact('sequences'));
     }
