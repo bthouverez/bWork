@@ -1,4 +1,3 @@
-
 <section class="row">
     <div class="col-md-3">
         <h2>Cours</h2>
@@ -16,7 +15,7 @@
         <p>Le site du consortium du World Wide Web est plein de ressources</p>
         <p>Le site w3schools rassemble une forte documentation du HTML</p>
         <p><a class="btn btn-secondary" target="_blank" href="https://www.w3.org/" role="button">Site W3C »</a>
-        <a class="btn btn-secondary" target="_blank" href="https://www.w3schools.com/html/html5_intro.asp" role="button">w3schools »</a>
+            <a class="btn btn-secondary" target="_blank" href="https://www.w3schools.com/html/html5_intro.asp" role="button">w3schools »</a>
         </p>
     </div>
     <div class="col-md-3">
@@ -26,4 +25,3 @@
     </div>
 </section>
 <hr>
-      

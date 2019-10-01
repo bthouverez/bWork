@@ -15,13 +15,15 @@
         </a>
     </p>
     @endauth
-    <section id="sequences">
-        @foreach($sequences as $s)
+        @foreach($sequences as $anneescol => $seqs)
+            <h2>20{{ substr($anneescol, 0,2) }}/20{{ substr($anneescol, 2) }}</h2>
+            <section class="sequences">
+            @foreach($seqs as $s)
             <div class="card sequence mb-3 mr-2">
                 <div class="card-header">
                     <a href="/sequences/{{ $s->id }}">
                         <h3 class="card-title">
-                            {{ $s->libelle }} {{ $s->annee }}
+                            {{ $s->libelle }}
                         </h3>
                     </a>
                     <div>
@@ -38,11 +40,21 @@
                 </div>
                 <div class="card-body">
                     <div class="card-text">
-                        <p>{{ $s->lieu }}</p>
-                        <p>{{ $s->groupe }}</p>
+                        <table class="table">
+                            <tr>
+                                <th>Lieu</th>
+                                <td>{{ $s->lieu }}</td>
+                            </tr>
+                            <tr>
+                                <th>Groupe</th>
+                                <td>{{ $s->groupe }}</td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>
+            @endforeach
+            </section>
+
         @endforeach
-    </section>
 @endsection

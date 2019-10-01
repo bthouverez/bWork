@@ -20,10 +20,10 @@ class SequencesController extends Controller
     {
         $an = intval(date('y'));
         $anneeScol = intval(date('m')) < 8 ? "".($an-1).$an : "".$an.($an+1);
-        if(Auth::check())
-            $sequences = Sequence::all();
-        else
-            $sequences = Sequence::where(['annee' => $anneeScol])->get();
+       // if(Auth::check())
+            $sequences = Sequence::all()->groupby('annee')->sort();
+       // else
+           // $sequences = array($anneeScol => Sequence::where(['annee' => $anneeScol])->get());
 
         return view('sequences.index', compact('sequences'));
     }
@@ -66,9 +66,6 @@ class SequencesController extends Controller
             'groupe' => ['required', 'min:3'],
         ]);
         $seq = Sequence::create($data);
-        $filename = resource_path().'/views/sequences/headers/'.$request->libelle.'_'.$request->annee.'.blade.php';
-        $filecontent = '<section class="row">'.PHP_EOL.PHP_EOL.'</section>'.PHP_EOL.'<hr>';
-        file_put_contents($filename, $filecontent);
 
         // ICAL file given
         if($request->files->count()) {
