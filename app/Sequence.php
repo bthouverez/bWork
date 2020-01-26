@@ -15,6 +15,6 @@ class Sequence extends Model
 
     public function infos()
     {
-        return $this->hasMany(Info::class);
+        return $this->hasMany(Info::class)->orderBy('created_at');
     }
 }
