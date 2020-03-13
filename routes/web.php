@@ -16,6 +16,10 @@ Route::get('/', function () {
 });
 
 
+
+
+Route::get('/distance', 'DistanceController@index');
+
 Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::resource('sequences', 'SequencesController');
@@ -24,4 +28,5 @@ Route::post('/sequences/{sequence}/infos', 'SequencesController@addInfo');
 Route::resource('sequences.seances', 'SeancesController');
 
 Auth::routes();
+
 Route::get('/home', 'HomeController@index')->name('home');
