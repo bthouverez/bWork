@@ -187,15 +187,14 @@
       <div class="row">
 
         <!-- Footer Location -->
-        <div class="col-lg-6 mb-5 mb-lg-0">
-          <img style="margin-top:-50%;margin-bottom:-50%;position: relative; top: 65px;" src="img/logo_business_school2.png">
+        <div class="col-lg-6">
+          <img style="margin-top:-50%;margin-bottom:-50%;position: relative; top: 45px;" src="img/logo_business_school2.png">
         </div>
 
 
         <!-- Footer About Text -->
         <div class="col-lg-6">
-          <p class="lead mb-0">Merci aux étudiants de BTS SIO2 pour leur efficacité et leur rapidité dans la mise en place de ces éléments d'aide.</p>
-          <p class="lead mb-0">Merci à <span title="Eponyme">Madame Bernard</span> d'avoir permis à ces étudiants de réaliser ces documents et des les avoir encadrés.</p>
+          <p class="lead mb-0">Merci aux étudiants de BTS SIO2 pour leur sérieux et leurs moyens techniques qui ont permis de mettre en place rapidement et efficacement ces documents d'aide.</p>
         </div>
 
       </div>
