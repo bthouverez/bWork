@@ -38,9 +38,9 @@
           <li class="nav-item mx-0 mx-lg-1">
             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">Teams</a>
           </li>
-          <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Contact</a>
-          </li>
+{{--          <li class="nav-item mx-0 mx-lg-1">--}}
+{{--            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Contact</a>--}}
+{{--          </li>--}}
         </ul>
       </div>
     </div>
@@ -82,8 +82,8 @@
 
       <!-- Portfolio Grid Items -->
       <div class="row">
-        <p class="lead">Voici une procédure, sous formats écrit et vidéo, permettant de mettre en place un environnement de travail collaboratif.</p>
-        <p class="lead">Il permettra aux enseignants de déposer cours et exercices pour chacune de leur classe.</p>
+        <p class="lead">Voici une procédure permettant de mettre en place un environnement de travail collaboratif.</p>
+        <p class="lead">Elle permettra aux enseignants de déposer cours et exercices pour chacune de leur classe.</p>
 
       </div>
       <hr>
@@ -137,8 +137,8 @@
 
       <!-- Portfolio Grid Items -->
       <div class="row">
-        <p class="lead">Voici une procédure, sous formats écrit et vidéo, permettant d'initialiser et rejoindre une visioconférence.</p>
-        <p class="lead">Il permettra aux enseignants de communiquer de vive voix avec leurs élèves.</p>
+        <p class="lead">Voici une procédure permettant d'initialiser et de rejoindre une visioconférence.</p>
+        <p class="lead">Elle permettra aux enseignants de communiquer de vive voix avec leurs élèves.</p>
       </div>
       <hr>
 
@@ -195,7 +195,7 @@
         <!-- Footer About Text -->
         <div class="col-lg-6">
           <p class="lead mb-0">Merci aux étudiants de BTS SIO2 pour leur efficacité et leur rapidité dans la mise en place de ces éléments d'aide.</p>
-          <p class="lead mb-0">Merci à <span title="Madame Eponyme">Madame Bernard</span> d'avoir permis à ces étudiants de réaliser ces documents et des les avoir encadrés.</p>
+          <p class="lead mb-0">Merci à <span title="Eponyme">Madame Bernard</span> d'avoir permis à ces étudiants de réaliser ces documents et des les avoir encadrés.</p>
         </div>
 
       </div>
