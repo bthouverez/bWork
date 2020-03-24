@@ -18,7 +18,11 @@ Route::get('/', function () {
 
 
 
+Route::post('/defi2', 'Defi2Controller@bleu');
+Route::get('/defi2', 'Defi2Controller@index');
+
 Route::get('/distance', 'DistanceController@index');
+Route::get('/generate', 'PeopleGenerationController@index');
 
 Route::get('/logout', 'Auth\LoginController@logout');
 

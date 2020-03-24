@@ -10,7 +10,8 @@ class TestController extends Controller
 {
     //
 
-    public function index(Sequence $sequence, Seance $seance) {
-        dd($sequence, $seance);
+    public function index() {
+
+
     }
 }
