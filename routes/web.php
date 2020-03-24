@@ -18,7 +18,6 @@ Route::get('/', function () {
 
 
 
-Route::post('/defi2', 'Defi2Controller@bleu');
 Route::get('/defi2', 'Defi2Controller@index');
 
 Route::get('/distance', 'DistanceController@index');
